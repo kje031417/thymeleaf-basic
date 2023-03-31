@@ -7,11 +7,14 @@
 <body>
 
 <h1>속성 설정</h1>
+<!-- th:name : 기존의 name 값을 덮어씌우거나 없으면 새로 만듦 ex. name="userA" -->
 <input type="text" name="mock" th:name="userA" />
 
 <h1>속성 추가</h1>
-- th:attrappend = <input type="text" class="text" th:attrappend="class='large'"/><br/>
-- th:attrprepend = <input type="text" class="text" th:attrprepend="class='large'"/><br/>
+<!-- th:attrappend : 속성 값 추가(그대로 붙기 때문에 띄어쓰기 필수!!) ex. class = "text large" -->
+<!-- th:classappend : 속성 값 추가(자동으로 해주기 때문에 띄어쓰기 필요 없음)-->
+- th:attrappend = <input type="text" class="text" th:attrappend="class=' large'"/><br/>
+- th:attrprepend = <input type="text" class="text" th:attrprepend="class='large '"/><br/>
 - th:classappend = <input type="text" class="text" th:classappend="large"/><br/>
 
 <h1>checked 처리</h1>

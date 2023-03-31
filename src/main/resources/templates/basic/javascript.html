@@ -5,32 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-
 <!-- 자바스크립트 인라인 사용 전 -->
 <script>
-  const username = [[${user.username}]];
-  const age = [[${user.age}]];
-
-  // 자바스크립트 내추럴 템플릿
-  const username2 = /*[[${user.username}]]*/ "test username";
-
-  // 객체
-  const user = [[${user}]];
+    let username = "[[${user.username}]]";
+    let age = [[${user.age}]];
+    //자바스크립트 내추럴 템플릿
+    let username2 = /*[[${user.username}]]*/ "test username";
+    //객체
+    let user = [[${user}]];
 </script>
-
 <!-- 자바스크립트 인라인 사용 후 -->
 <script th:inline="javascript">
-  const username = [[${user.username}]];
-  const age = [[${user.age}]];
-
-  // 자바스크립트 내추럴 템플릿
-  const username2 = /*[[${user.username}]]*/ "test username";
-
-  // 객체
-  const user = [[${user}]];
+    let username = [[${user.username}]];    /* 자동으로 ""을 넣어줌 */
+    let age = [[${user.age}]];
+    //자바스크립트 내추럴 템플릿
+    let username2 = /*[[${user.username}]]*/ "test username";   /* 렌더링 될때는 주석 안의 값을 렌더링 함 (UserA) */
+    //객체
+    let user = [[${user}]];     /* 값을 Json 형태로 넣어줌 */
 </script>
-
-
-
 </body>
 </html>
+자바스크립트 인라인 사용 전 - 결과
+<!--<script>
+    let username = userA;
+    let age = 10;
+    //자바스크립트 내추럴 템플릿
+    let username2 = /*userA*/ "test username";
+    //객체
+    let user = BasicController.User(username = userA, age = 10);
+</script>-->
+<!-- 자바스크립트 인라인 each -->
+<script th:inline="javascript">
+    [# th:each="user, stat : ${users}"]
+    let user[[${stat.count}]] = [[${user}]];
+    [/]
+</script>

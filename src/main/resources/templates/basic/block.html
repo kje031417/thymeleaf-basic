@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<!--each만으로 사용하기 힘들때 block 활용-->
 <th:block th:each="user : ${users}">
     <div>
         사용자 이름1 <span th:text="${user.username}"></span>
